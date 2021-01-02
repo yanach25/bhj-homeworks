@@ -1,6 +1,4 @@
 const sliders = document.querySelectorAll('.slider__item');
-const activeClass = 'slider__item_active';
-let activeIndex = 0;
 
 const arrows = document.querySelectorAll('.slider__arrow');
 
@@ -13,6 +11,8 @@ Array.from(arrows).forEach(arrow => {
 })
 
 changeSlide = (direction) => {
+    const activeClass = 'slider__item_active';
+    let activeIndex = Array.from(sliders).findIndex(slider => slider.classList.contains(activeClass));
     sliders[activeIndex].classList.remove(activeClass);
 
     activeIndex = activeIndex + direction;

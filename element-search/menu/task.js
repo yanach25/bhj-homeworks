@@ -6,13 +6,20 @@ Array.from(menuList).forEach(li => {
     const subMenu = li.querySelector('.menu_sub');
 
     if (subMenu) {
-        li.onclick = () => {
-            if (lastOpened) {
-                lastOpened.classList.remove('menu_active');
+        li.onclick = (event) => {
+            if (!event.target.href.includes('https')) {
+                if (lastOpened === subMenu) {
+                    lastOpened.classList.remove('menu_active');
+                    lastOpened = null;
+                } else {
+                    if (lastOpened) {
+                        lastOpened.classList.remove('menu_active');
+                    }
+                    subMenu.classList.add('menu_active');
+                    lastOpened = subMenu;
+                }
+                return false;
             }
-            subMenu.classList.add('menu_active');
-            lastOpened = subMenu;
-            return false;
         }
     }
 })
