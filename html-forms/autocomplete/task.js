@@ -72,7 +72,7 @@ class Autocomplete {
                 text: item.label,
                 value: item.value,
             }
-        });
+        }).filter(item => item.text.includes(text));
 
         return options;
     }
